@@ -29,15 +29,6 @@ $(document).ready(function () {
         "dom": '<"dt-buttons"Bf><"clear">lirtp',
         "buttons": [
             {
-                extend: 'nuevo',
-                text: '<button class="btn-success ocultar" id="botonVerde">Nuevo  <i class="fa-solid fa-plus"></i></button>',
-            },
-            {
-                extend: 'qr',
-                text: '<button class="btn-dark"  data-toggle="modal" id="btnQRNuevo">Imprimir Etiquetas  <i class="fa-solid fa-qrcode"></i></button>',
-            },
-
-            {
                 extend: 'pdfHtml5',
                 text: '<button class="btn-danger">Exportar a PDF <i class="far fa-file-pdf"></i></button>',
                 download: 'open',

@@ -66,6 +66,6 @@
      <script src="ingreso/admin/js/popper.min.js"></script>
         
      <script src="ingreso/plugins/sweetalert2/sweetalert2.all.min.js"></script>
-     <script src="ingreso/js/codigo.js"></script>
+     <script src="js/codigo.js"></script>
     </body>
 </html>

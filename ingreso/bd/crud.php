@@ -5,7 +5,7 @@ if($_SESSION["s_usuario"] === null){
 }
 $idUsuario=$_SESSION["idUsuario"];
 
-include_once '../bd/conexion.php';
+include_once '../../bd/conexion.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 // Recepción de los datos enviados mediante POST desde el JS   
@@ -25,8 +25,8 @@ $diaConCeros = str_pad($date, 2, "0", STR_PAD_LEFT);
 $horaConCeros = str_pad($hour, 2, "0", STR_PAD_LEFT);
 $minutosConCeros = str_pad($min, 2, "0", STR_PAD_LEFT);
 $segundosConCeros = str_pad($sec, 2, "0", STR_PAD_LEFT);
-$current_date = "$year/$mesConCeros/$diaConCeros $horaConCeros:$minutosConCeros:$segundosConCeros";
-$fechaHoy="$year/$mesConCeros/$diaConCeros";
+$current_date = "$year-$mesConCeros-$diaConCeros $horaConCeros:$minutosConCeros:$segundosConCeros";
+$fechaHoy="$year-$mesConCeros-$diaConCeros";
 $estado=0;
 $consulta = "select estado from registro where idPersona='" . $idPersona . "' and horario LIKE '$fechaHoy%' order by id desc limit 1";
             

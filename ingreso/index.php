@@ -1,6 +1,6 @@
 <?php
 session_start();
-//var_dump($_SESSION);
+//var_dump($_SESSION);exit;
 if($_SESSION["s_usuario"] === null){
     header("Location: login.php");
 }
@@ -23,14 +23,14 @@ $minutosConCeros = str_pad($min, 2, "0", STR_PAD_LEFT);
 $segundosConCeros = str_pad($sec, 2, "0", STR_PAD_LEFT);
 
 
-$current_date = "$year/$mesConCeros/$diaConCeros $horaConCeros:$minutosConCeros:$segundosConCeros";
+$current_date = "$year-$mesConCeros-$diaConCeros $horaConCeros:$minutosConCeros:$segundosConCeros";
 //$current_date = "$year/$month/$date $hour:$min:$sec";
 $fechaactual = "$date/$month/$year";
 $hora = "$hour:$min:$sec";
 
 $fechaHoy = substr($current_date, 0, 10);
-
-include_once 'bd/conexion.php';
+//echo $fechaHoy;
+include_once '../bd/conexion.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 $consulta = "select * from puestos where id='" . $puesto . "'";
@@ -39,6 +39,7 @@ $resultado->execute();
 $dataPuesto = $resultado->fetch(PDO::FETCH_ASSOC);
 
 $consulta = "select id, idPersona, horario, puesto, estado,(select nombre from persona where id=idPersona)as nombre,(select apellido from persona where id=idPersona)as apellido FROM registro where puesto='" . $puesto . "' and horario  LIKE '$fechaHoy%'";
+//echo $consulta;exit;
 $resultado = $conexion->prepare($consulta);
 $resultado->execute();
 $dataRegistro = $resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -124,9 +125,6 @@ $dataRegistro = $resultado->fetchAll(PDO::FETCH_ASSOC);
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                <!--<img style="height: 150px;" alt="Sin Foto"
-                         src="https://www.crecepersonas.es/templates/yootheme/cache/employee-bcd31bcd.png"
-                         class="rounded"/> -->
                     <div class="list-group" STYLE="TEXT-ALIGN: LEFT">
                         <a href="#" class="list-group-item list-group-item-action active">DATOS PERSONALES</a>
                         <div class="form-group">
@@ -244,12 +242,7 @@ $dataRegistro = $resultado->fetchAll(PDO::FETCH_ASSOC);
         <div class="row">
             <!-- Footer Location-->
             <div class="col-lg-4 mb-5 mb-lg-0">
-                <!-- <h4 class="text-uppercase mb-4">Location</h4>
-                 <p class="lead mb-0">
-                     2215 John Daniel Drive
-                     <br />
-                     Clark, MO 65243
-                 </p>-->
+                
             </div>
             <!-- Footer Social Icons-->
             <div class="col-lg-4 mb-5 mb-lg-0">

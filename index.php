@@ -6,7 +6,7 @@ if($_SESSION["s_usuario"] === null){
 }
 
 
-include_once 'ingreso/bd/conexion.php';
+include_once 'bd/conexion.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 $consulta = "select * from puestos";
@@ -49,14 +49,14 @@ $dataRegistro = $resultado->fetchAll(PDO::FETCH_ASSOC);
         <div class="navbar-brand" style="text-align: right; font-size: medium" ><?php
  
         if($_SESSION["rol"]==1){
-            echo "<br>Administrador: ".$_SESSION['nombre']."<br><a href='bd/logout.php'>Cerrar Sesión</a><br><a href='ingreso/admin'>Ingreso Administrador</a></div>";
+            echo "<br>Administrador: ".$_SESSION['nombre']."<br><a href='bd/restablecer.php'>Cambiar Contraseña</a><br><a href='bd/logout.php'>Cerrar Sesión</a><br><a href='ingreso/admin'>Ingreso Administrador</a></div>";
         }
         if($_SESSION["rol"]==2){
-            echo "<br>Operador: ".$_SESSION['nombre']."<br><a href='bd/logout.php'>Cerrar Sesión</a></div>";
+            echo "<br>Operador: ".$_SESSION['nombre']."<br><a href='bd/restablecer.php'>Cambiar Contraseña</a><br><a href='bd/logout.php'>Cerrar Sesión</a></div>";
         }
         
         if($_SESSION["rol"]==3){
-            echo "<br>Supervisor: ".$_SESSION['nombre']."<br><a href='bd/logout.php'>Cerrar Sesión</a><br><a href='supervisor'>Ingreso Supervisor</a></div>";
+            echo "<br>Supervisor: ".$_SESSION['nombre']."<br><a href='bd/restablecer.php'>Cambiar Contraseña</a><br><a href='bd/logout.php'>Cerrar Sesión</a><br><a href='supervisor'>Ingreso Supervisor</a></div>";
         }
        
         ?>

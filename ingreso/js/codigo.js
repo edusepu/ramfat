@@ -12,7 +12,7 @@ $('#formLogin').submit(function(e){
       return false; 
     }else{
         $.ajax({
-           url:"ingreso/bd/login.php",
+           url:"bd/login.php",
            type:"POST",
            datatype: "json",
            data: {usuario:usuario, password:password}, 
