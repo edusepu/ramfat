@@ -1,5 +1,12 @@
-$(document).ready(function () { 
-    
+$(document).ready(function () {
+    var select = document.getElementById("mes");
+    var anio = document.getElementById("anio");
+    var options=document.getElementsByTagName("option");
+    console.log(select.value);
+    console.log(options[select.value-1].innerHTML);
+    var mes = options[select.value-1].innerHTML;
+console.log(mes);
+
     tablaReportes = $("#tablaReportes").DataTable({
 "sort": false,
         "dom": '<"dt-buttons"Bf><"clear">lirtp',
@@ -19,7 +26,14 @@ $(document).ready(function () {
                     search: 'applied'
                 },
                 customize:function(doc) {
-
+                    var select = document.getElementById("mes");
+                    //var anio = document.getElementById("anio");
+                    var options=document.getElementsByTagName("option");
+                    console.log(select.value);
+                    console.log(options[select.value-1].innerHTML);
+                    var mes = options[select.value-1].innerHTML;
+                    console.log(mes);
+                    var anio = $("#anio").val();
                     doc.content.splice(0,1);
                     var now = new Date();
                     var jsDate = now.getDate()+'-'+(now.getMonth()+1)+'-'+now.getFullYear();
@@ -37,7 +51,7 @@ $(document).ready(function () {
                                 {
                                     alignment: 'center',
                                     italics: true,
-                                    text: 'Registro de Ingresos MES DE SEPTIEMBRE 2022',
+                                    text: 'Registro de Ingresos MES DE '+mes+' '+anio,
                                     fontSize: 14,
                                     margin: [1,1]
                                 },
@@ -96,28 +110,4 @@ $(document).ready(function () {
             "sProcessing": "Procesando...",
         }
     });
-
-   
-
-    var fila; //capturar la fila para editar o borrar el registro
-
-    
-    $("#formReportes").submit(function (e) {
-//        alert("anda");
-        e.preventDefault();
-
-        //id =  "";
-        nombre = $.trim($("#nombre").val());
-        apellido = $.trim($("#apellido").val());
-        dni = $.trim($("#dni").val());
-        dominio = $.trim($("#dominio").val());
-        marca = $.trim($("#marca").val());
-        modelo = $.trim($("#modelo").val());
-
-
-
-    });
-
-
-
 });
